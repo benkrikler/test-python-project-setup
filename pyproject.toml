@@ -26,6 +26,15 @@ classifiers = [
 dependencies = []
 dynamic = ["version"]
 
+[project.optional-dependencies]
+test = [
+    "pytest >=6",
+]
+dev = [
+    "pytest >=6",
+    "pre-commit >= 2",
+]
+
 [project.urls]
 Documentation = "https://github.com/unknown/fibonacci#readme"
 Issues = "https://github.com/unknown/fibonacci/issues"
@@ -38,16 +47,11 @@ path = "fibonacci/__about__.py"
 dependencies = [
   "pytest",
   "pytest-cov",
-  "black",
-  "pre-commit",
 ]
-[tool.hatch.envs.default.scripts]
-cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=fibonacci --cov=tests"
-no-cov = "cov --no-cov"
-black = "python -m black fibonacci"
 
-[[tool.hatch.envs.test.matrix]]
-python = ["37", "38", "39", "310", "311"]
+[tool.hatch.envs.default.scripts]
+tests = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=fibonacci --cov=tests"
+no-cov = "tests --no-cov"
 
 [tool.coverage.run]
 branch = true
@@ -62,3 +66,15 @@ exclude_lines = [
   "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
+
+[tool.mypy]
+files = "fibonacci"
+python_version = "3.7"
+warn_unused_configs = true
+strict = true
+show_error_codes = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+warn_unreachable = true
+
+[tool.isort]
+profile = "black"
