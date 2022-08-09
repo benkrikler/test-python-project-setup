@@ -4,7 +4,7 @@ from functools import lru_cache
 from typing import List
 
 
-@lru_cache
+@lru_cache(maxsize=2048)
 def nth_fibonacci(n: int) -> int:
     if n < 0:
         raise ValueError(f"Need n >= 0, received {n}")

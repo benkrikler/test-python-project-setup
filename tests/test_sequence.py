@@ -1,5 +1,9 @@
+from __future__ import annotations
+
 import pytest
+
 from fibonacci.sequence import get_list, nth_fibonacci
+
 
 def test_nth_fibonacci():
     assert nth_fibonacci(0) == 0
@@ -16,8 +20,9 @@ def test_nth_fibonacci():
     assert nth_fibonacci(10) == 55
     assert nth_fibonacci(11) == 89
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(ValueError):
         nth_fibonacci(-1)
+
 
 def test_get_list():
     values = get_list(12)
