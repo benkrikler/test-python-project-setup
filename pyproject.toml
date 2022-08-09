@@ -39,6 +39,7 @@ dependencies = [
   "pytest",
   "pytest-cov",
   "black",
+  "pre-commit",
 ]
 [tool.hatch.envs.default.scripts]
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=fibonacci --cov=tests"
