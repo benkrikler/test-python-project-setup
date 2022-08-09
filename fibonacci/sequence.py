@@ -1,5 +1,7 @@
-from typing import List, Iterator
+from __future__ import annotations
+
 from functools import lru_cache
+from typing import List
 
 
 @lru_cache
@@ -15,3 +17,8 @@ def nth_fibonacci(n: int) -> int:
 
 def get_list(n_items: int) -> List[int]:
     return [nth_fibonacci(i) for i in range(n_items)]
+
+
+if __name__ == "__main__":
+    print("The first 10 fibonacci numbers are:")  # noqa: T201
+    print(get_list(10))  # noqa: T201
